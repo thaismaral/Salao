@@ -1,21 +1,48 @@
 public class Cliente {
     private String nome;
     private int telefone;
-    private String servico;
     private String horario;
+    private ArrayList<Servico> servicosContratados;
 
-    private String marcarHorario(String hora){
+    public Cliente(String nome, int telefone, String horario) {
+        this.nome = nome;
+        this.telefone = telefone;
         this.horario = horario;
-        return
+
+    }
+    public void adicionarServico(Servico servico) {
+        servicosContratados.add(servico);
     }
 
-    private String desmarcarHorario(String hora){
-        return
+    public void realizarServicos() {
+        for (Servico servico : servicosContratados) {
+            servico.realizar();
+        }
     }
+    public void desmarcarServico (String hora,Servico servico){
+        this.horario = hora;
+        servicosContratados.remove(servico);
+        System.out.printf("Serviço desmarcado");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -23,27 +50,7 @@ public class Cliente {
     public int getTelefone() {
         return telefone;
     }
-
     public void setTelefone(int telefone) {
         this.telefone = telefone;
-    }
-
-    public String getServico() {
-        return servico;
-    }
-
-    public void setServico(String servico) {
-        this.servico = servico;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public Cliente(String nome, int telefone, String servico, String horario) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.servico = servico;
-        this.horario = horario;
     }
 }
